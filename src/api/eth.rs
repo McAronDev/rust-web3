@@ -110,7 +110,8 @@ impl<T: Transport> Eth<T> {
                 self.transport.execute("eth_getBlockByHash", vec![hash, include_txs])
             }
             BlockId::Number(num) => {
-                let num = helpers::serialize(&num);
+                let hex = format!("0x{:x}", &num);
+                let num = helpers::serialize(hex);
                 self.transport.execute("eth_getBlockByNumber", vec![num, include_txs])
             }
         };
@@ -128,7 +129,8 @@ impl<T: Transport> Eth<T> {
                 self.transport.execute("eth_getBlockByHash", vec![hash, include_txs])
             }
             BlockId::Number(num) => {
-                let num = helpers::serialize(&num);
+                let hex = format!("0x{:x}", &num);
+                let num = helpers::serialize(hex);
                 self.transport.execute("eth_getBlockByNumber", vec![num, include_txs])
             }
         };
@@ -144,7 +146,8 @@ impl<T: Transport> Eth<T> {
                 self.transport.execute("eth_getBlockTransactionCountByHash", vec![hash])
             }
             BlockId::Number(num) => {
-                let num = helpers::serialize(&num);
+                let hex = format!("0x{:x}", &num);
+                let num = helpers::serialize(hex);
                 self.transport
                     .execute("eth_getBlockTransactionCountByNumber", vec![num])
             }
@@ -230,7 +233,8 @@ impl<T: Transport> Eth<T> {
                     .execute("eth_getUncleByBlockHashAndIndex", vec![hash, index])
             }
             BlockId::Number(num) => {
-                let num = helpers::serialize(&num);
+                let hex = format!("0x{:x}", &num);
+                let num = helpers::serialize(hex);
                 self.transport
                     .execute("eth_getUncleByBlockNumberAndIndex", vec![num, index])
             }
@@ -247,7 +251,8 @@ impl<T: Transport> Eth<T> {
                 self.transport.execute("eth_getUncleCountByBlockHash", vec![hash])
             }
             BlockId::Number(num) => {
-                let num = helpers::serialize(&num);
+                let hex = format!("0x{:x}", &num);
+                let num = helpers::serialize(hex);
                 self.transport.execute("eth_getUncleCountByBlockNumber", vec![num])
             }
         };
